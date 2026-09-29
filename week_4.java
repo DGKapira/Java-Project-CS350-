@@ -72,17 +72,46 @@ public class week_4 {
     }
 
     public static void bookClassroom(String[] classrooms, boolean[] booked, int index) {
-        if (index < 0 || index >= booked.length) {
-            System.out.println("Invalid classroom index.");
-            return;
-        }
-        if (booked[index]) {
-            System.out.println(classrooms[index] + " is already booked.");
-        } else {
-            booked[index] = true;
-            System.out.println(classrooms[index] + " has been booked.");
-        }
+
+    if (index < 0 || index >= booked.length) {
+        System.out.println("Invalid classroom index.");
+        return;
     }
+
+    if (booked[index]) {
+        System.out.println(classrooms[index] + " is already booked.");
+        return;
+    }
+
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Enter your lecturer ID: ");
+    int lecturerId = scanner.nextInt();
+
+    System.out.print("Enter the day of the month (1-31): ");
+    int day = scanner.nextInt();
+
+    System.out.print("Enter starting hour: ");
+    int startHour = scanner.nextInt();
+
+    System.out.print("Enter ending hour: ");
+    int endHour = scanner.nextInt();
+
+    int duration = endHour - startHour;
+
+    booked[index] = true;
+
+    System.out.println("\n--- Booking Details ---");
+    System.out.println("Lecturer ID: " + lecturerId);
+    System.out.println("Classroom: " + classrooms[index]);
+    System.out.println("Day: " + day);
+    System.out.println("Start time: " + startHour + ":00");
+    System.out.println("End time: " + endHour + ":00");
+    System.out.println("Duration: " + duration + " hours");
+
+    System.out.println("\n" + classrooms[index] + " has been booked.");
+}
+
 
     public static void unbookClassroom(String[] classrooms, boolean[] booked, int index) {
         if (index < 0 || index >= booked.length) {
